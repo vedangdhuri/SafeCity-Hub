@@ -35,8 +35,8 @@ rl.question("How many commits do you want to make? ", async (answer) => {
     
     // Push
     console.log("Pushing to GitHub...");
-    await git.push("origin main", "HEAD");
-1
+    await git.push("origin main", "--force");
+
     console.log("🚀 All commits pushed successfully!");
   } catch (err) {
     console.error("❌ Git error:", err);
