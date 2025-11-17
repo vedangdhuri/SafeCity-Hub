@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <title>crime analysis</title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="keywords"
+      content="Befriend Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"
+    />
+    <script type="application/x-javascript">
+      addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+      	function hideURLbar(){ window.scrollTo(0,1); }
+    </script>
+    <!-- //for-mobile-apps -->
+    {% load static %}
+    <link
+      href="{% static 'css/bootstrap.css' %}"
+      rel="stylesheet"
+      type="text/css"
+      media="all"
+    />
+    <link href="{% static 'css/lsb.css' %}" rel="stylesheet" type="text/css" />
+    <link
+      href="{% static 'css/style.css' %}"
+      rel="stylesheet"
+      type="text/css"
+      media="all"
+    />
+    <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet" />
+    <link
+      href="//fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i"
+      rel="stylesheet"
+    />
+    <link
+      href="//fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <!-- header -->
+    <div class="header-w3l-agile">
+      <div class="container">
+        <h1 style="color: white; text-align: center; font-size: 50px">
+          Crime Analysis
+        </h1>
+
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <!-- //header -->
+    <!-- banner -->
+    <div class="banner-w3ls" style="min-height: 300px" id="home-background-change">
+      <div class="container">
+        <div class="header-nav">
+          <nav class="navbar navbar-default">
+            <!-- navbar-header -->
+            <div
+              class="collapse navbar-collapse"
+              id="bs-example-navbar-collapse-1"
+            >
+              <ul class="nav navbar-nav navbar-right">
+                <li>
+                  <a
+                    href="{% url 'police_home' %}"
+                    class="hvr-underline-from-center active"
+                    >Change User ID And Password</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="{% url 'view_complaints' %}"
+                    class="hvr-underline-from-center active"
+                    >View Complaints</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="{% url 'upload_criminals' %}"
+                    class="hvr-underline-from-center active"
+                    >Criminal Details</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="{% url 'crime_analysis' %}"
+                    class="hvr-underline-from-center active"
+                    >Crime Analysis</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="{% url 'crime_chart' %}"
+                    class="hvr-underline-from-center active"
+                  >
+                    Chart Analysis</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="{% url 'police_login' %}"
+                    class="hvr-underline-from-center"
+                    >Logout</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="clearfix"></div>
+          </nav>
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="banner-info">
+          <div id="top" class="callbacks_container"></div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+    <!-- //banner -->
+    <div class="contact-agileits" id="contact">
+      <div class="container">
+        <div class="title-agileits">
+          <h3>Upload Criminal</h3>
+        </div>
+        <div class="agileits_w3layouts">
+          <div class="col-md-6 wthree-agile-icons">
+            <img
+<<<<<<< HEAD
+              src="{% static 'images/user1.png' %}"
+=======
+              src="{% static 'images/policeman.png' %}"
+>>>>>>> bb7e08f (first commit)
+              width="300"
+              height="300"
+              style="margin-top: 80px"
+            />
+          </div>
+          <div class="col-md-6 wthree-agile-form">
+            <form method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              <span class="input input--nariko">
+                <span
+                  class="input__label-content input__label-content--nariko"
+                  style="color: black; font-size: 25px"
+                  >Station Name</span
+                >
+                <input
+                  name="station_name"
+                  type="text"
+                  id="input-20"
+                  placeholder="Enter Station Name"
+                  value="{{sname}}"
+                  required=""
+                  style="width: 100%; height: 2.5em; background: #efeeee"
+                  readonly
+                />
+
+              </span>
+              <span class="input input--nariko">
+                <span
+                  class="input__label-content input__label-content--nariko"
+                  style="color: black; font-size: 25px"
+                  >Area Code</span
+                >
+                <input
+                  name="arae_code"
+                  type="text"
+                  id="input-21"
+                  value="{{area_code}}"
+                  placeholder="Enter Area Code"
+                  style="width: 100%; height: 2.5em; background: #efeeee"
+                  required=""
+                  readonly
+                />
+                
+              </span>
+              <span class="input input--nariko">
+                <span
+                  class="input__label-content input__label-content--nariko"
+                  style="color: black; font-size: 25px"
+                  >City</span
+                >
+                <input
+                  name="city"
+                  type="text"
+                  id="input-21"
+                  placeholder="Enter City"
+                  style="width: 100%; height: 2.5em; background: #efeeee"
+                  required=""
+                />
+
+              </span>
+              <span class="input input--nariko">
+                <span
+                  class="input__label-content input__label-content--nariko"
+                  style="color: black; font-size: 25px"
+                  >Criminal Name</span
+                >
+                <input
+                  name="criminal_name"
+                  type="text"
+                  id="input-21"
+                  placeholder="Enter Criminal Name"
+                  style="width: 100%; height: 2.5em; background: #efeeee"
+                  required=""
+                />
+
+              </span>
+              <span class="input input--nariko">
+                <span
+                  class="input__label-content input__label-content--nariko"
+                  style="color: black; font-size: 25px"
+                  >Phone</span
+                >
+                <input
+                  name="mobile"
+                  type="text"
+                  id="input-21"
+                  placeholder="Enter Phone Number"
+                  style="width: 100%; height: 2.5em; background: #efeeee"
+                  required=""
+                />
+                
+              </span>
+              <span class="input input--nariko">
+                <span
+                  class="input__label-content input__label-content--nariko"
+                  style="color: black; font-size: 25px"
+                  >Complaint Type</span
+                >
+                <input
+                  name="complaint_type"
+                  type="text"
+                  id="input-21"
+                  placeholder="Enter Complaint Type"
+                  style="width: 100%; height: 2.5em; background: #efeeee"
+                  required=""
+                />
+              </span>
+              <span class="input input--nariko">
+                <span
+                  class="input__label-content input__label-content--nariko"
+                  style="color: black; font-size: 25px"
+                  >Acts</span
+                >
+                <input
+                  name="acts"
+                  type="text"
+                  id="input-21"
+                  placeholder="Enter Acts"
+                  style="width: 100%; height: 2.5em; background: #efeeee"
+                  required=""
+                />
+              </span>
+              <span class="input input--nariko">
+                <span
+                  class="input__label-content input__label-content--nariko"
+                  style="color: black; font-size: 25px"
+                  >Sessions</span
+                >
+                <input
+                  name="sessions"
+                  type="text"
+                  id="input-21"
+                  placeholder="Enter Sessions"
+                  style="width: 100%; height: 2.5em; background: #efeeee"
+                  required=""
+                />
+              </span>
+              <span class="input input--nariko">
+                <span
+                  class="input__label-content input__label-content--nariko"
+                  style="color: black; font-size: 25px"
+                  >Year</span
+                >
+                <input
+                  name="year"
+                  type="text"
+                  id="input-21"
+                  placeholder="Enter Year"
+                  style="width: 100%; height: 2.5em; background: #efeeee"
+                  required=""
+                />
+              </span>
+
+              <span class="input input--nariko">
+                <span
+                  class="input__label-content input__label-content--nariko"
+                  style="color: black; font-size: 25px"
+                  >Criminal Image</span
+                >
+                <input
+                  name="criminal_image"
+                  type="file"
+                  id="input-21"
+                  placeholder=""
+                  style="width: 100%; height: 2.5em; background: #efeeee"
+                  required=""
+                />
+              </span>
+              <span class="input input--nariko">
+                <span
+                  class="input__label-content input__label-content--nariko"
+                  style="color: black; font-size: 25px"
+                  >Status</span
+                >
+                <input
+                  name="status"
+                  type="text"
+                  id="input-21"
+                  placeholder=" "
+                  style="width: 100%; height: 2.5em; background: #efeeee"
+                  required=""
+                />
+              </span>
+
+              <br /><br />
+
+              <input type="submit" value="Upload" /><br /><br />
+            </form>
+          </div>
+
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+    <!-- //mail -->
+
+    <!-- //contact -->
+    <!-- footer -->
+
+    <!-- //footer -->
+    <div class="copyright-w3-agile">
+      <div class="container">
+        <p>Crime Analysis</p>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <!-- start-smoth-scrolling -->
+
+    <!-- js -->
+    <script
+      type="text/javascript"
+      src="{% static 'js/jquery-2.1.4.min.js' %}"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{% static 'js/numscroller-1.0.js' %}"
+    ></script>
+    <script src="{% static 'js/lsb.min.js' %}"></script>
+    <script>
+      $(window).load(function () {
+        $.fn.lightspeedBox();
+      });
+    </script>
+    <!-- //js -->
+    <script type="text/javascript" src="{% static 'js/move-top.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/easing.js' %}"></script>
+    <script type="text/javascript">
+      jQuery(document).ready(function ($) {
+        $(".scroll").click(function (event) {
+          event.preventDefault();
+          $("html,body").animate(
+            { scrollTop: $(this.hash).offset().top },
+            1000
+          );
+        });
+      });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <script src="{% static 'js/responsiveslides.min.js' %}"></script>
+    <script>
+      // You can also use "$(window).load(function() {"
+      $(function () {
+        // Slideshow 4
+        $("#slider3").responsiveSlides({
+          auto: true,
+          pager: false,
+          nav: true,
+          speed: 500,
+          namespace: "callbacks",
+          before: function () {
+            $(".events").append("<li>before event fired.</li>");
+          },
+          after: function () {
+            $(".events").append("<li>after event fired.</li>");
+          },
+        });
+      });
+    </script>
+
+    <script type="text/javascript">
+      $(window).load(function () {
+        $("#flexiselDemo1").flexisel({
+          visibleItems: 2,
+          animationSpeed: 1000,
+          autoPlay: true,
+          autoPlaySpeed: 3000,
+          pauseOnHover: true,
+          enableResponsiveBreakpoints: true,
+          responsiveBreakpoints: {
+            portrait: {
+              changePoint: 480,
+              visibleItems: 1,
+            },
+            landscape: {
+              changePoint: 640,
+              visibleItems: 1,
+            },
+            tablet: {
+              changePoint: 991,
+              visibleItems: 1,
+            },
+          },
+        });
+      });
+    </script>
+    <script
+      type="text/javascript"
+      src="{% static 'js/jquery.flexisel.js' %}"
+    ></script>
+    <!-- smooth scrolling -->
+    <script type="text/javascript">
+      $(document).ready(function () {
+        /*
+			var defaults = {
+			containerID: 'toTop', // fading element id
+			containerHoverID: 'toTopHover', // fading element hover id
+			scrollSpeed: 1200,
+			easingType: 'linear'
+			};
+		*/
+        $().UItoTop({ easingType: "easeOutQuart" });
+      });
+    </script>
+    <a href="#" id="toTop" style="display: block">
+      <span id="toTopHover" style="opacity: 1"> </span
+    ></a>
+    <!-- //smooth scrolling -->
+    <script
+      type="text/javascript"
+      src="{% static 'js/bootstrap.js' %}"
+    ></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var form = document.querySelector("form");
+        if (!form) return;
+
+        // Get all input elements
+        var cityInput = form.querySelector('input[name="city"]');
+        var criminalNameInput = form.querySelector(
+          'input[name="criminal_name"]'
+        );
+        var mobileInput = form.querySelector('input[name="mobile"]');
+        var complaintTypeInput = form.querySelector(
+          'input[name="complaint_type"]'
+        );
+        var actsInput = form.querySelector('input[name="acts"]');
+        var sessionsInput = form.querySelector('input[name="sessions"]');
+        var yearInput = form.querySelector('input[name="year"]');
+        var criminalImageInput = form.querySelector(
+          'input[name="criminal_image"]'
+        );
+        var statusInput = form.querySelector('input[name="status"]');
+
+        function getErrorSpan(input, id) {
+          var span = input.parentNode.querySelector("#" + id);
+          if (!span) {
+            span = document.createElement("span");
+            span.id = id;
+            span.style.color = "red";
+            span.style.fontSize = "14px";
+            span.style.display = "block";
+            input.parentNode.appendChild(span);
+          }
+          return span;
+        }
+
+        var cityError = getErrorSpan(cityInput, "city-error");
+        var criminalNameError = getErrorSpan(
+          criminalNameInput,
+          "criminal-name-error"
+        );
+        var mobileError = getErrorSpan(mobileInput, "mobile-error");
+        var complaintTypeError = getErrorSpan(
+          complaintTypeInput,
+          "complaint-type-error"
+        );
+        var actsError = getErrorSpan(actsInput, "acts-error");
+        var sessionsError = getErrorSpan(sessionsInput, "sessions-error");
+        var yearError = getErrorSpan(yearInput, "year-error");
+        var criminalImageError = getErrorSpan(
+          criminalImageInput,
+          "criminal-image-error"
+        );
+        var statusError = getErrorSpan(statusInput, "status-error");
+
+        // Validation functions
+        function validateCity() {
+          if (cityInput.value.trim() === "") {
+            cityError.textContent = "City is required.";
+            return false;
+          } else if (!/^[A-Za-z\s]+$/.test(cityInput.value.trim())) {
+            cityError.textContent =
+              "City must contain only letters and spaces.";
+            return false;
+          } else {
+            cityError.textContent = "";
+            return true;
+          }
+        }
+        function validateCriminalName() {
+          if (criminalNameInput.value.trim() === "") {
+            criminalNameError.textContent = "Criminal name is required.";
+            return false;
+          } else if (!/^[A-Za-z\s]+$/.test(criminalNameInput.value.trim())) {
+            criminalNameError.textContent =
+              "Name must contain only letters and spaces.";
+            return false;
+          } else {
+            criminalNameError.textContent = "";
+            return true;
+          }
+        }
+        function validateMobile() {
+          if (mobileInput.value.trim() === "") {
+            mobileError.textContent = "Phone number is required.";
+            return false;
+          } else if (!/^\d{10}$/.test(mobileInput.value.trim())) {
+            mobileError.textContent =
+              "Please enter a valid 10-digit mobile number.";
+            return false;
+          } else {
+            mobileError.textContent = "";
+            return true;
+          }
+        }
+        function validateComplaintType() {
+          if (complaintTypeInput.value.trim() === "") {
+            complaintTypeError.textContent = "Complaint type is required.";
+            return false;
+          } else {
+            complaintTypeError.textContent = "";
+            return true;
+          }
+        }
+        function validateActs() {
+          if (actsInput.value.trim() === "") {
+            actsError.textContent = "Acts field is required.";
+            return false;
+          } else {
+            actsError.textContent = "";
+            return true;
+          }
+        }
+        function validateSessions() {
+          if (sessionsInput.value.trim() === "") {
+            sessionsError.textContent = "Sessions field is required.";
+            return false;
+          } else {
+            sessionsError.textContent = "";
+            return true;
+          }
+        }
+        function validateYear() {
+          var year = yearInput.value.trim();
+          var currentYear = new Date().getFullYear();
+          if (year === "") {
+            yearError.textContent = "Year is required.";
+            return false;
+          } else if (!/^\d{4}$/.test(year)) {
+            yearError.textContent = "Year must be 4 digits.";
+            return false;
+          } else if (parseInt(year) < 1900 || parseInt(year) > currentYear) {
+            yearError.textContent = "Enter a valid year.";
+            return false;
+          } else {
+            yearError.textContent = "";
+            return true;
+          }
+        }
+        function validateCriminalImage() {
+          if (!criminalImageInput.value) {
+            criminalImageError.textContent = "Criminal image is required.";
+            return false;
+          } else {
+            criminalImageError.textContent = "";
+            return true;
+          }
+        }
+        function validateStatus() {
+          if (statusInput.value.trim() === "") {
+            statusError.textContent = "Status is required.";
+            return false;
+          } else {
+            statusError.textContent = "";
+            return true;
+          }
+        }
+
+        // Attach input event listeners for real-time validation
+        cityInput.addEventListener("input", validateCity);
+        criminalNameInput.addEventListener("input", validateCriminalName);
+        mobileInput.addEventListener("input", validateMobile);
+        complaintTypeInput.addEventListener("input", validateComplaintType);
+        actsInput.addEventListener("input", validateActs);
+        sessionsInput.addEventListener("input", validateSessions);
+        yearInput.addEventListener("input", validateYear);
+        criminalImageInput.addEventListener("change", validateCriminalImage);
+        statusInput.addEventListener("input", validateStatus);
+
+        form.addEventListener("submit", function (e) {
+          var valid =
+            validateCity() &
+            validateCriminalName() &
+            validateMobile() &
+            validateComplaintType() &
+            validateActs() &
+            validateSessions() &
+            validateYear() &
+            validateCriminalImage() &
+            validateStatus();
+          if (!valid) {
+            e.preventDefault();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <title>crime analysis</title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="keywords"
+      content="Befriend Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"
+    />
+    <script type="application/x-javascript">
+      addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+      	function hideURLbar(){ window.scrollTo(0,1); }
+    </script>
+    <!-- //for-mobile-apps -->
+    {% load static %}
+    <link
+      href="{% static 'css/bootstrap.css' %}"
+      rel="stylesheet"
+      type="text/css"
+      media="all"
+    />
+    <link href="{% static 'css/lsb.css' %}" rel="stylesheet" type="text/css" />
+    <link
+      href="{% static 'css/style.css' %}"
+      rel="stylesheet"
+      type="text/css"
+      media="all"
+    />
+    <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet" />
+    <link
+      href="//fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i"
+      rel="stylesheet"
+    />
+    <link
+      href="//fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <style>
+      #customers {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        background-color: white;
+      }
+
+      #customers td,
+      #customers th {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+
+      #customers tr:nth-child(even) {
+        background-color: #953025;
+      }
+
+      #customers tr:hover {
+        background-color: #ddd;
+      }
+
+      #customers th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #bf522c;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- header -->
+    <div class="header-w3l-agile">
+      <div class="container">
+        <h1 style="color: white; text-align: center; font-size: 50px">
+          Crime Analysis
+        </h1>
+
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <!-- //header -->
+    <!-- banner -->
+    <div class="banner-w3ls" style="min-height: 300px" id="home-background-change">
+      <div class="container">
+        <div class="header-nav">
+          <nav class="navbar navbar-default">
+            <!-- navbar-header -->
+            <div
+              class="collapse navbar-collapse"
+              id="bs-example-navbar-collapse-1"
+            >
+              <ul class="nav navbar-nav navbar-right">
+                <li>
+                  <a
+                    href="{% url 'police_home' %}"
+                    class="hvr-underline-from-center active"
+                    >Change Userid And Password</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="{% url 'view_complaints' %}"
+                    class="hvr-underline-from-center active"
+                    >View Complaints</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="{% url 'upload_criminals' %}"
+                    class="hvr-underline-from-center active"
+                    >Criminal Details</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="{% url 'crime_analysis' %}"
+                    class="hvr-underline-from-center active"
+                    >Crime Analysis</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="{% url 'crime_chart' %}"
+                    class="hvr-underline-from-center active"
+                  >
+                    Chart Analysis</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="{% url 'police_login' %}"
+                    class="hvr-underline-from-center"
+                    >Logout</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="clearfix"></div>
+          </nav>
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="banner-info">
+          <div id="top" class="callbacks_container"></div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+    <!-- //banner -->
+    <!-- bootstrap-pop-up -->
+
+    <!-- //bootstrap-pop-up -->
+
+    <!-- about -->
+
+    <!-- //about -->
+    <!-- content -->
+
+    <!-- //content -->
+    <!--team-->
+
+    <!--//team-->
+
+    <!-- content -->
+
+    <!-- //process -->
+    <!-- gallery -->
+
+    <!-- //gallery -->
+    <!-- news -->
+
+    <!-- //news -->
+
+    <!-- feed -->
+
+    <!-- //feed -->
+    <!-- contact -->
+    <!-- mail -->
+    <div class="contact-agileits" id="contact">
+      <div class="container">
+        <div class="title-agileits">
+          <h3>View Complaints</h3>
+        </div>
+        <div class="agileits_w3layouts">
+          <table id="customers">
+            <thead>
+              <tr class="warning">
+                <th>Name</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Areacode</th>
+                <th>Date</th>
+                <th>Complaint Type</th>
+                <th>Complaint</th>
+                <th>Action</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            {% for o in complaint_det %}
+            <tbody>
+              <tr>
+                <td>{{o.username}}</td>
+                <td>{{o.email}}</td>
+                <td>{{o.address}}</td>
+                <td>{{o.city}}</td>
+                <td>{{o.area_code}}</td>
+                <td>{{o.date}}</td>
+                <td>{{o.complaint_type}}</td>
+                <td>{{o.complaint}}</td>
+                <td>
+                  <a href="{% url 'arrest_criminal' o.id%}">Upload Criminal</a>
+                </td>
+                <td>
+                  <a href="{% url 'update_casestatus' o.id%}"
+                    >Case Status Send To User Email</a
+                  >
+                </td>
+              </tr>
+            </tbody>
+            {% endfor %}
+          </table>
+
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+    <!-- //mail -->
+
+    <!-- //contact -->
+    <!-- footer -->
+
+    <!-- //footer -->
+    <div class="copyright-w3-agile">
+      <div class="container">
+        <p>Crime Analysis</p>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <!-- start-smoth-scrolling -->
+
+    <!-- js -->
+    <script
+      type="text/javascript"
+      src="{% static 'js/jquery-2.1.4.min.js' %}"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{% static 'js/numscroller-1.0.js' %}"
+    ></script>
+    <script src="{% static 'js/lsb.min.js' %}"></script>
+    <script>
+      $(window).load(function () {
+        $.fn.lightspeedBox();
+      });
+    </script>
+    <!-- //js -->
+    <script type="text/javascript" src="{% static 'js/move-top.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/easing.js' %}"></script>
+    <script type="text/javascript">
+      jQuery(document).ready(function ($) {
+        $(".scroll").click(function (event) {
+          event.preventDefault();
+          $("html,body").animate(
+            { scrollTop: $(this.hash).offset().top },
+            1000
+          );
+        });
+      });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <script src="{% static 'js/responsiveslides.min.js' %}"></script>
+    <script>
+      // You can also use "$(window).load(function() {"
+      $(function () {
+        // Slideshow 4
+        $("#slider3").responsiveSlides({
+          auto: true,
+          pager: false,
+          nav: true,
+          speed: 500,
+          namespace: "callbacks",
+          before: function () {
+            $(".events").append("<li>before event fired.</li>");
+          },
+          after: function () {
+            $(".events").append("<li>after event fired.</li>");
+          },
+        });
+      });
+    </script>
+
+    <script type="text/javascript">
+      $(window).load(function () {
+        $("#flexiselDemo1").flexisel({
+          visibleItems: 2,
+          animationSpeed: 1000,
+          autoPlay: true,
+          autoPlaySpeed: 3000,
+          pauseOnHover: true,
+          enableResponsiveBreakpoints: true,
+          responsiveBreakpoints: {
+            portrait: {
+              changePoint: 480,
+              visibleItems: 1,
+            },
+            landscape: {
+              changePoint: 640,
+              visibleItems: 1,
+            },
+            tablet: {
+              changePoint: 991,
+              visibleItems: 1,
+            },
+          },
+        });
+      });
+    </script>
+    <script
+      type="text/javascript"
+      src="{% static 'js/jquery.flexisel.js' %}"
+    ></script>
+    <!-- smooth scrolling -->
+    <script type="text/javascript">
+      $(document).ready(function () {
+        /*
+			var defaults = {
+			containerID: 'toTop', // fading element id
+			containerHoverID: 'toTopHover', // fading element hover id
+			scrollSpeed: 1200,
+			easingType: 'linear'
+			};
+		*/
+        $().UItoTop({ easingType: "easeOutQuart" });
+      });
+    </script>
+    <a href="#" id="toTop" style="display: block">
+      <span id="toTopHover" style="opacity: 1"> </span
+    ></a>
+    <!-- //smooth scrolling -->
+    <script
+      type="text/javascript"
+      src="{% static 'js/bootstrap.js' %}"
+    ></script>
+  </body>
+</html>

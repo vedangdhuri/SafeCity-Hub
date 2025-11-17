@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<<<<<<< HEAD
+
+<head>
+  <title>crime analysis</title>
+  <!-- for-mobile-apps -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="keywords" content="Befriend Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+  <script type="application/x-javascript">
+      addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+      	function hideURLbar(){ window.scrollTo(0,1); }
+    </script>
+  <!-- //for-mobile-apps -->
+  {% load static %}
+  <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+  <link href="{% static 'css/lsb.css' %}" rel="stylesheet" type="text/css" />
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+  <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet" />
+  <link href="//fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i" rel="stylesheet" />
+  <link
+    href="//fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic"
+    rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <!-- header -->
+  <div class="header-w3l-agile">
+    <div class="container">
+      <h1 style="color: white; text-align: center; font-size: 50px">
+        Crime Analysis
+      </h1>
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <!-- //header -->
+  <!-- banner -->
+  <div class="banner-w3ls" style="min-height: 300px" id="home-background-change">
+    <div class="container">
+      <div class="header-nav">
+        <nav class="navbar navbar-default">
+          <!-- navbar-header -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <a href="{% url 'admin_home' %}" class="hvr-underline-from-center active">Upload Police Details</a>
+              </li>
+              <li>
+                <a href="{% url 'adminview_crime' %}" class="hvr-underline-from-center active">View Crime Details</a>
+              </li>
+
+              <li>
+                <a href="{% url 'admin_login' %}" class="hvr-underline-from-center">Logout</a>
+              </li>
+            </ul>
+          </div>
+          <div class="clearfix"></div>
+        </nav>
+      </div>
+      <div class="clearfix"></div>
+
+      <div class="banner-info">
+        <div id="top" class="callbacks_container"></div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+  <!-- //banner -->
+  <div class="contact-agileits" id="contact">
+    <div class="container">
+      <div class="title-agileits">
+        <h3>Upload Police Details</h3>
+      </div>
+      <div class="agileits_w3layouts">
+        <div class="col-md-6 wthree-agile-icons">
+          <img src="{% static 'images/police1.png' %}" width="300" height="300" style="margin-top: 80px" />
+        </div>
+        <div class="col-md-6 wthree-agile-form">
+          <form method="post">
+            {% csrf_token %}
+            <span class="input input--nariko">
+              <span class="input__label-content input__label-content--nariko"
+                style="color: black; font-size: 25px">Police Name</span>
+              <input name="police_name" type="text" id="input-20" placeholder="Enter Police Name" required=""
+                style="width: 100%; height: 2.5em; background: #efeeee" />
+            </span>
+            <span class="input input--nariko">
+              <span class="input__label-content input__label-content--nariko"
+                style="color: black; font-size: 25px">Gender</span>
+              <input name="gender" type="text" id="input-20" placeholder="Enter Gender" required=""
+                style="width: 100%; height: 2.5em; background: #efeeee" />
+            </span>
+            <span class="input input--nariko">
+              <span class="input__label-content input__label-content--nariko"
+                style="color: black; font-size: 25px">Email</span>
+              <input name="email" type="email" id="input-20" placeholder="Enter Email" required=""
+                style="width: 100%; height: 2.5em; background: #efeeee" />
+              <span id="email-error" style="color: red; font-size: 14px">
+              </span>
+              <span class="input input--nariko">
+                <span class="input__label-content input__label-content--nariko"
+                  style="color: black; font-size: 25px">Station Name</span>
+                <input name="station_name" type="text" id="input-20" placeholder="Enter Station Name" required=""
+                  style="width: 100%; height: 2.5em; background: #efeeee" />
+              </span>
+              <span class="input input--nariko">
+                <span class="input__label-content input__label-content--nariko"
+                  style="color: black; font-size: 25px">Area Code</span>
+                <input name="area_code" type="text" id="input-21" placeholder="Enter Area Code"
+                  style="width: 100%; height: 2.5em; background: #efeeee" required="" />
+              </span>
+              <span class="input input--nariko">
+                <span class="input__label-content input__label-content--nariko"
+                  style="color: black; font-size: 25px">Area name</span>
+                <input name="area_name" type="text" id="input-21" placeholder="Enter Area Name"
+                  style="width: 100%; height: 2.5em; background: #efeeee" required="" />
+              </span>
+              <span class="input input--nariko">
+                <span class="input__label-content input__label-content--nariko"
+                  style="color: black; font-size: 25px">Location</span>
+                <input name="location" type="text" id="input-21" placeholder="Enter Location"
+                  style="width: 100%; height: 2.5em; background: #efeeee" required="" />
+              </span>
+              <br /><br />
+
+              <input type="submit" value="Submit" /><br /><br />
+          </form>
+        </div>
+
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+  <!-- //mail -->
+
+  <!-- //contact -->
+  <!-- footer -->
+
+  <!-- //footer -->
+  <div class="copyright-w3-agile">
+    <div class="container">
+      <p>Crime Analysis</p>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <!-- start-smoth-scrolling -->
+
+  <!-- js -->
+  <script type="text/javascript" src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/numscroller-1.0.js' %}"></script>
+  <script src="{% static 'js/lsb.min.js' %}"></script>
+  <script>
+    $(window).load(function () {
+      $.fn.lightspeedBox();
+    });
+  </script>
+  <!-- //js -->
+  <script type="text/javascript" src="{% static 'js/move-top.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/easing.js' %}"></script>
+  <script type="text/javascript">
+    jQuery(document).ready(function ($) {
+      $(".scroll").click(function (event) {
+        event.preventDefault();
+        $("html,body").animate(
+          { scrollTop: $(this.hash).offset().top },
+          1000
+        );
+      });
+    });
+  </script>
+  <!-- start-smoth-scrolling -->
+  <script src="{% static 'js/responsiveslides.min.js' %}"></script>
+  <script>
+    // You can also use "$(window).load(function() {"
+    $(function () {
+      // Slideshow 4
+      $("#slider3").responsiveSlides({
+        auto: true,
+        pager: false,
+        nav: true,
+        speed: 500,
+        namespace: "callbacks",
+        before: function () {
+          $(".events").append("<li>before event fired.</li>");
+        },
+        after: function () {
+          $(".events").append("<li>after event fired.</li>");
+        },
+      });
+    });
+  </script>
+
+  <script type="text/javascript">
+    $(window).load(function () {
+      $("#flexiselDemo1").flexisel({
+        visibleItems: 2,
+        animationSpeed: 1000,
+        autoPlay: true,
+        autoPlaySpeed: 3000,
+        pauseOnHover: true,
+        enableResponsiveBreakpoints: true,
+        responsiveBreakpoints: {
+          portrait: {
+            changePoint: 480,
+            visibleItems: 1,
+          },
+          landscape: {
+            changePoint: 640,
+            visibleItems: 1,
+          },
+          tablet: {
+            changePoint: 991,
+            visibleItems: 1,
+          },
+        },
+      });
+    });
+  </script>
+  <script type="text/javascript" src="{% static 'js/jquery.flexisel.js' %}"></script>
+  <!-- smooth scrolling -->
+  <script type="text/javascript">
+    $(document).ready(function () {
+      /*
+    var defaults = {
+    containerID: 'toTop', // fading element id
+    containerHoverID: 'toTopHover', // fading element hover id
+    scrollSpeed: 1200,
+    easingType: 'linear'
+    };
+  */
+      $().UItoTop({ easingType: "easeOutQuart" });
+    });
+  </script>
+  <a href="#" id="toTop" style="display: block">
+    <span id="toTopHover" style="opacity: 1"> </span></a>
+  <!-- //smooth scrolling -->
+  <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var form = document.querySelector("form");
+      if (!form) return;
+
+      // Get all input elements
+      var policeNameInput = form.querySelector('input[name="police_name"]');
+      var genderInput = form.querySelector('input[name="gender"]');
+      var emailInput = form.querySelector('input[name="email"]');
+      var stationNameInput = form.querySelector('input[name="station_name"]');
+      var areaCodeInput = form.querySelector('input[name="area_code"]');
+      var areaNameInput = form.querySelector('input[name="area_name"]');
+      var locationInput = form.querySelector('input[name="location"]');
+
+      function getErrorSpan(input, id) {
+        var span = input.parentNode.querySelector("#" + id);
+        if (!span) {
+          span = document.createElement("span");
+          span.id = id;
+          span.style.color = "red";
+          span.style.fontSize = "14px";
+          span.style.display = "block";
+          input.parentNode.appendChild(span);
+        }
+        return span;
+      }
+
+      var policeNameError = getErrorSpan(policeNameInput, "police-name-error");
+      var genderError = getErrorSpan(genderInput, "gender-error");
+      var emailError = emailInput.parentNode.querySelector("#email-error");
+      var stationNameError = getErrorSpan(stationNameInput, "station-name-error");
+      var areaCodeError = getErrorSpan(areaCodeInput, "area-code-error");
+      var areaNameError = getErrorSpan(areaNameInput, "area-name-error");
+      var locationError = getErrorSpan(locationInput, "location-error");
+
+      // Validation functions for Email
+      function validateEmail() {
+        var email = emailInput.value.trim();
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (email === "") {
+          emailError.textContent = "Email is required.";
+          return false;
+        } else if (!emailPattern.test(email)) {
+          emailError.textContent = "Please enter a valid email address.";
+          return false;
+        } else {
+          emailError.textContent = "";
+          return true;
+        }
+      }
+      emailInput.addEventListener("input", validateEmail);
+      form.addEventListener("submit", function (e) {
+        if (!validateEmail()) {
+          e.preventDefault();
+        }
+      });
+      // Validation functions
+      function validatePoliceName() {
+        if (policeNameInput.value.trim() === "") {
+          policeNameError.textContent = "Police name is required.";
+          return false;
+        } else if (!/^[A-Za-z\s]+$/.test(policeNameInput.value.trim())) {
+          policeNameError.textContent = "Police name must contain only letters and spaces.";
+          return false;
+        } else {
+          policeNameError.textContent = "";
+          return true;
+        }
+      }
+      function validateGender() {
+        if (genderInput.value.trim() === "") {
+          genderError.textContent = "Gender is required.";
+          return false;
+        } else if (!/^(male|female|other)$/i.test(genderInput.value.trim())) {
+          genderError.textContent = "Gender must be Male, Female, or Other.";
+          return false;
+        } else {
+          genderError.textContent = "";
+          return true;
+        }
+      }
+      function validateStationName() {
+        if (stationNameInput.value.trim() === "") {
+          stationNameError.textContent = "Station name is required.";
+          return false;
+        } else {
+          stationNameError.textContent = "";
+          return true;
+        }
+      }
+      function validateAreaCode() {
+        var code = areaCodeInput.value.trim();
+        if (code === "") {
+          areaCodeError.textContent = "Area code is required.";
+          return false;
+        } else if (!/^\d{3,10}$/.test(code)) {
+          areaCodeError.textContent = "Area code must be 3-10 digits.";
+          return false;
+        } else {
+          areaCodeError.textContent = "";
+          return true;
+        }
+      }
+      function validateAreaName() {
+        if (areaNameInput.value.trim() === "") {
+          areaNameError.textContent = "Area name is required.";
+          return false;
+        } else {
+          areaNameError.textContent = "";
+          return true;
+        }
+      }
+      function validateLocation() {
+        if (locationInput.value.trim() === "") {
+          locationError.textContent = "Location is required.";
+          return false;
+        } else {
+          locationError.textContent = "";
+          return true;
+        }
+      }
+
+      // Attach input event listeners for real-time validation
+      policeNameInput.addEventListener("input", validatePoliceName);
+      genderInput.addEventListener("input", validateGender);
+      emailInput.addEventListener("input", validateEmail);
+      stationNameInput.addEventListener("input", validateStationName);
+      areaCodeInput.addEventListener("input", validateAreaCode);
+      areaNameInput.addEventListener("input", validateAreaName);
+      locationInput.addEventListener("input", validateLocation);
+
+      form.addEventListener("submit", function (e) {
+        var valid =
+          validatePoliceName() &
+          validateGender() &
+          validateEmail() &
+          validateStationName() &
+          validateAreaCode() &
+          validateAreaName() &
+          validateLocation();
+        if (!valid) {
+          e.preventDefault();
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
+=======
+  <head>
+    <title>crime analysis</title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Befriend Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript">
+      addEventListener(
+        'load',
+        function () {
+          setTimeout(hideURLbar, 0)
+        },
+        false
+      )
+      function hideURLbar() {
+        window.scrollTo(0, 1)
+      }
+    </script>
+    <!-- //for-mobile-apps -->
+    {% load static %}
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{% static 'css/lsb.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet" />
+    <link href="//fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i" rel="stylesheet" />
+    <link href="//fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <!-- header -->
+    <div class="header-w3l-agile">
+      <div class="container">
+        <h1 style="color: white; text-align: center; font-size: 50px">Crime Analysis</h1>
+
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <!-- //header -->
+    <!-- banner -->
+    <div class="banner-w3ls" style="min-height: 300px" id="home-background-change">
+      <div class="container">
+        <div class="header-nav">
+          <nav class="navbar navbar-default">
+            <!-- navbar-header -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav navbar-right">
+                <li>
+                  <a href="{% url 'admin_home' %}" class="hvr-underline-from-center active">Upload Police Details</a>
+                </li>
+                <li>
+                  <a href="{% url 'adminview_crime' %}" class="hvr-underline-from-center active">View Crime Details</a>
+                </li>
+
+                <li>
+                  <a href="{% url 'admin_login' %}" class="hvr-underline-from-center">Logout</a>
+                </li>
+              </ul>
+            </div>
+            <div class="clearfix"></div>
+          </nav>
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="banner-info">
+          <div id="top" class="callbacks_container"></div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+    <!-- //banner -->
+    <div class="contact-agileits" id="contact">
+      <div class="container">
+        <div class="title-agileits">
+          <h3>Upload Police Details</h3>
+        </div>
+        <div class="agileits_w3layouts">
+          <div class="col-md-6 wthree-agile-icons">
+            <img src="{% static 'images/higher_officer.png' %}" width="300" height="300" style="margin-top: 80px" />
+          </div>
+          <div class="col-md-6 wthree-agile-form">
+            <form method="post">
+              {% csrf_token %}
+              <span class="input input--nariko">
+                <span class="input__label-content input__label-content--nariko" style="color: black; font-size: 25px">Police Name</span>
+                <input name="police_name" type="text" id="input-20" placeholder="Enter Police Name" required="" style="width: 100%; height: 2.5em; background: #efeeee" />
+              </span>
+              <span class="input input--nariko">
+                <span class="input__label-content input__label-content--nariko" style="color: black; font-size: 25px">Gender</span>
+                <input name="gender" type="text" id="input-20" placeholder="Enter Gender" required="" style="width: 100%; height: 2.5em; background: #efeeee" />
+              </span>
+              <span class="input input--nariko">
+                <span class="input__label-content input__label-content--nariko" style="color: black; font-size: 25px">Email</span>
+                <input name="email" type="email" id="input-20" placeholder="Enter Email" required="" style="width: 100%; height: 2.5em; background: #efeeee" />
+                <span id="email-error" style="color: red; font-size: 14px"></span>
+              </span>
+              <span class="input input--nariko">
+                <span class="input__label-content input__label-content--nariko" style="color: black; font-size: 25px">Station Name</span>
+                <input name="station_name" type="text" id="input-20" placeholder="Enter Station Name" required="" style="width: 100%; height: 2.5em; background: #efeeee" />
+              </span>
+                <span class="input input--nariko">
+                  <span class="input__label-content input__label-content--nariko" style="color: black; font-size: 25px">Area Code</span>
+                  <input name="area_code" type="text" id="input-21" placeholder="Enter Area Code" style="width: 100%; height: 2.5em; background: #efeeee" required="" />
+                </span>
+                <span class="input input--nariko">
+                  <span class="input__label-content input__label-content--nariko" style="color: black; font-size: 25px">Area name</span>
+                  <input name="area_name" type="text" id="input-21" placeholder="Enter Area Name" style="width: 100%; height: 2.5em; background: #efeeee" required="" />
+                </span>
+                <span class="input input--nariko">
+                  <span class="input__label-content input__label-content--nariko" style="color: black; font-size: 25px">Location</span>
+                  <input name="location" type="text" id="input-21" placeholder="Enter Location" style="width: 100%; height: 2.5em; background: #efeeee" required="" />
+                </span>
+                <br /><br />
+
+                <input type="submit" value="Submit" /><br />
+              </span>
+            </form>
+          </div>
+
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+    <!-- //mail -->
+
+    <!-- //contact -->
+    <!-- footer -->
+
+    <!-- //footer -->
+    <div class="copyright-w3-agile">
+      <div class="container">
+        <p>Crime Analysis</p>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <!-- start-smoth-scrolling -->
+
+    <!-- js -->
+    <script type="text/javascript" src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/numscroller-1.0.js' %}"></script>
+    <script src="{% static 'js/lsb.min.js' %}"></script>
+    <script>
+      $(window).load(function () {
+        $.fn.lightspeedBox()
+      })
+    </script>
+    <!-- //js -->
+    <script type="text/javascript" src="{% static 'js/move-top.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/easing.js' %}"></script>
+    <script type="text/javascript">
+      jQuery(document).ready(function ($) {
+        $('.scroll').click(function (event) {
+          event.preventDefault()
+          $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000)
+        })
+      })
+    </script>
+    <!-- start-smoth-scrolling -->
+    <script src="{% static 'js/responsiveslides.min.js' %}"></script>
+    <script>
+      // You can also use "$(window).load(function() {"
+      $(function () {
+        // Slideshow 4
+        $('#slider3').responsiveSlides({
+          auto: true,
+          pager: false,
+          nav: true,
+          speed: 500,
+          namespace: 'callbacks',
+          before: function () {
+            $('.events').append('<li>before event fired.</li>')
+          },
+          after: function () {
+            $('.events').append('<li>after event fired.</li>')
+          }
+        })
+      })
+    </script>
+
+    <script type="text/javascript">
+      $(window).load(function () {
+        $('#flexiselDemo1').flexisel({
+          visibleItems: 2,
+          animationSpeed: 1000,
+          autoPlay: true,
+          autoPlaySpeed: 3000,
+          pauseOnHover: true,
+          enableResponsiveBreakpoints: true,
+          responsiveBreakpoints: {
+            portrait: {
+              changePoint: 480,
+              visibleItems: 1
+            },
+            landscape: {
+              changePoint: 640,
+              visibleItems: 1
+            },
+            tablet: {
+              changePoint: 991,
+              visibleItems: 1
+            }
+          }
+        })
+      })
+    </script>
+    <script type="text/javascript" src="{% static 'js/jquery.flexisel.js' %}"></script>
+    <!-- smooth scrolling -->
+    <script type="text/javascript">
+      $(document).ready(function () {
+        /*
+                var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+                };
+              */
+        $().UItoTop({ easingType: 'easeOutQuart' })
+      })
+    </script>
+    <a href="#" id="toTop" style="display: block"><span id="toTopHover" style="opacity: 1"></span></a>
+    <!-- //smooth scrolling -->
+    <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        var form = document.querySelector('form')
+        if (!form) return
+      
+        // Get all input elements
+        var policeNameInput = form.querySelector('input[name="police_name"]')
+        var genderInput = form.querySelector('input[name="gender"]')
+        var emailInput = form.querySelector('input[name="email"]')
+        var stationNameInput = form.querySelector('input[name="station_name"]')
+        var areaCodeInput = form.querySelector('input[name="area_code"]')
+        var areaNameInput = form.querySelector('input[name="area_name"]')
+        var locationInput = form.querySelector('input[name="location"]')
+      
+        function getErrorSpan(input, id) {
+          var span = input.parentNode.querySelector('#' + id)
+          if (!span) {
+            span = document.createElement('span')
+            span.id = id
+            span.style.color = 'red'
+            span.style.fontSize = '14px'
+            span.style.display = 'block'
+            input.parentNode.appendChild(span)
+          }
+          return span
+        }
+      
+        var policeNameError = getErrorSpan(policeNameInput, 'police-name-error')
+        var genderError = getErrorSpan(genderInput, 'gender-error')
+        var emailError = emailInput.parentNode.querySelector('#email-error')
+        var stationNameError = getErrorSpan(stationNameInput, 'station-name-error')
+        var areaCodeError = getErrorSpan(areaCodeInput, 'area-code-error')
+        var areaNameError = getErrorSpan(areaNameInput, 'area-name-error')
+        var locationError = getErrorSpan(locationInput, 'location-error')
+      
+        // Validation functions for Email
+        function validateEmail() {
+          var email = emailInput.value.trim()
+          var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+          if (email === '') {
+            emailError.textContent = 'Email is required.'
+            return false
+          } else if (!emailPattern.test(email)) {
+            emailError.textContent = 'Please enter a valid email address.'
+            return false
+          } else {
+            emailError.textContent = ''
+            return true
+          }
+        }
+        emailInput.addEventListener('input', validateEmail)
+        form.addEventListener('submit', function (e) {
+          if (!validateEmail()) {
+            e.preventDefault()
+          }
+        })
+        // Validation functions
+        function validatePoliceName() {
+          if (policeNameInput.value.trim() === '') {
+            policeNameError.textContent = 'Police name is required.'
+            return false
+          } else if (!/^[A-Za-z\s]+$/.test(policeNameInput.value.trim())) {
+            policeNameError.textContent = 'Police name must contain only letters and spaces.'
+            return false
+          } else {
+            policeNameError.textContent = ''
+            return true
+          }
+        }
+        function validateGender() {
+          if (genderInput.value.trim() === '') {
+            genderError.textContent = 'Gender is required.'
+            return false
+          } else if (!/^(male|female|other)$/i.test(genderInput.value.trim())) {
+            genderError.textContent = 'Gender must be Male, Female, or Other.'
+            return false
+          } else {
+            genderError.textContent = ''
+            return true
+          }
+        }
+        function validateStationName() {
+          if (stationNameInput.value.trim() === '') {
+            stationNameError.textContent = 'Station name is required.'
+            return false
+          } else {
+            stationNameError.textContent = ''
+            return true
+          }
+        }
+        function validateAreaCode() {
+          var code = areaCodeInput.value.trim()
+          if (code === '') {
+            areaCodeError.textContent = 'Area code is required.'
+            return false
+          } else if (!/^\d{3,10}$/.test(code)) {
+            areaCodeError.textContent = 'Area code must be 3-10 digits.'
+            return false
+          } else {
+            areaCodeError.textContent = ''
+            return true
+          }
+        }
+        function validateAreaName() {
+          if (areaNameInput.value.trim() === '') {
+            areaNameError.textContent = 'Area name is required.'
+            return false
+          } else {
+            areaNameError.textContent = ''
+            return true
+          }
+        }
+        function validateLocation() {
+          if (locationInput.value.trim() === '') {
+            locationError.textContent = 'Location is required.'
+            return false
+          } else {
+            locationError.textContent = ''
+            return true
+          }
+        }
+      
+        // Attach input event listeners for real-time validation
+        policeNameInput.addEventListener('input', validatePoliceName)
+        genderInput.addEventListener('input', validateGender)
+        emailInput.addEventListener('input', validateEmail)
+        stationNameInput.addEventListener('input', validateStationName)
+        areaCodeInput.addEventListener('input', validateAreaCode)
+        areaNameInput.addEventListener('input', validateAreaName)
+        locationInput.addEventListener('input', validateLocation)
+      
+        form.addEventListener('submit', function (e) {
+          var valid = validatePoliceName() && validateGender() && validateEmail() && validateStationName() && validateAreaCode() && validateAreaName() && validateLocation()
+          if (!valid) {
+            e.preventDefault()
+          }
+        })
+      })
+    </script>
+  </body>
+</html>
+>>>>>>> bb7e08f (first commit)

@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <title>crime analysis</title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="keywords"
+      content="Befriend Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"
+    />
+    <script type="application/x-javascript">
+      addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+      	function hideURLbar(){ window.scrollTo(0,1); }
+    </script>
+    <!-- //for-mobile-apps -->
+    {% load static %}
+    <link
+      href="{% static 'css/bootstrap.css' %}"
+      rel="stylesheet"
+      type="text/css"
+      media="all"
+    />
+    <link href="{% static 'css/lsb.css' %}" rel="stylesheet" type="text/css" />
+    <link
+      href="{% static 'css/style.css' %}"
+      rel="stylesheet"
+      type="text/css"
+      media="all"
+    />
+    <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet" />
+    <link
+      href="//fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i"
+      rel="stylesheet"
+    />
+    <link
+      href="//fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var form = document.querySelector("form");
+      var addressInput = form.querySelector('input[name="address"]');
+      var cityInput = form.querySelector('input[name="city"]');
+      var areaCodeInput = form.querySelector('input[name="area_code"]');
+      var mobileInput = form.querySelector('input[name="mobile"]');
+      var dateInput = form.querySelector('input[name="date"]');
+      var complaintTypeInput = form.querySelector('input[name="complaint_type"]');
+      var complaintInput = form.querySelector('textarea[name="complaint"]');
+
+      // Helper to create/get error span
+      function getErrorSpan(input, id) {
+        var span = input.parentNode.querySelector("#" + id);
+        if (!span) {
+          span = document.createElement("span");
+          span.id = id;
+          span.style.color = "red";
+          span.style.fontSize = "14px";
+          input.parentNode.appendChild(span);
+        }
+        return span;
+      }
+
+      var addressError = getErrorSpan(addressInput, "address-error");
+      var cityError = getErrorSpan(cityInput, "city-error");
+      var areaCodeError = getErrorSpan(areaCodeInput, "area-code-error");
+      var mobileError = getErrorSpan(mobileInput, "mobile-error");
+      var dateError = getErrorSpan(dateInput, "date-error");
+      var complaintTypeError = getErrorSpan(complaintTypeInput, "complaint-type-error");
+      var complaintError = getErrorSpan(complaintInput, "complaint-error");
+
+      // Validation functions
+      function validateAddress() {
+        if (addressInput.value.trim() === "") {
+          addressError.textContent = "Address is required.";
+          return false;
+        } else {
+          addressError.textContent = "";
+          return true;
+        }
+      }
+      function validateCity() {
+        if (cityInput.value.trim() === "") {
+          cityError.textContent = "City is required.";
+          return false;
+        } else if (!/^[A-Za-z\s]+$/.test(cityInput.value.trim())) {
+          cityError.textContent = "City must contain only letters and spaces.";
+          return false;
+        } else {
+          cityError.textContent = "";
+          return true;
+        }
+      }
+      function validateAreaCode() {
+        if (areaCodeInput.value.trim() === "") {
+          areaCodeError.textContent = "Area code is required.";
+          return false;
+        } else if (!/^\d{3,10}$/.test(areaCodeInput.value.trim())) {
+          areaCodeError.textContent = "Area code must be 3-10 digits.";
+          return false;
+        } else {
+          areaCodeError.textContent = "";
+          return true;
+        }
+      }
+      function validateMobile() {
+        if (mobileInput.value.trim() === "") {
+          mobileError.textContent = "Mobile number is required.";
+          return false;
+        } else if (!/^\d{10}$/.test(mobileInput.value.trim())) {
+          mobileError.textContent = "Please enter a valid 10-digit mobile number.";
+          return false;
+        } else {
+          mobileError.textContent = "";
+          return true;
+        }
+      }
+      function validateDate() {
+        var dateValue = dateInput.value.trim();
+        if (dateValue === "") {
+          dateError.textContent = "Date is required.";
+          return false;
+        } else if (!/^\d{4}-\d{2}-\d{2}$/.test(dateValue)) {
+          dateError.textContent = "Date must be in YYYY-MM-DD format.";
+          return false;
+        } else {
+          var dateObj = new Date(dateValue);
+          var today = new Date();
+          today.setHours(0,0,0,0);
+          if (isNaN(dateObj.getTime())) {
+            dateError.textContent = "Invalid date.";
+            return false;
+          } else if (dateObj > today) {
+            dateError.textContent = "Date cannot be in the future.";
+            return false;
+          } else {
+            dateError.textContent = "";
+            return true;
+          }
+        }
+      }
+      function validateComplaintType() {
+        if (complaintTypeInput.value.trim() === "") {
+          complaintTypeError.textContent = "Complaint type is required.";
+          return false;
+        } else {
+          complaintTypeError.textContent = "";
+          return true;
+        }
+      }
+      function validateComplaint() {
+        if (complaintInput.value.trim() === "") {
+          complaintError.textContent = "Complaint is required.";
+          return false;
+        } else if (complaintInput.value.trim().length < 10) {
+          complaintError.textContent = "Complaint must be at least 10 characters.";
+          return false;
+        } else {
+          complaintError.textContent = "";
+          return true;
+        }
+      }
+
+      // Attach input event listeners for real-time validation
+      addressInput.addEventListener("input", validateAddress);
+      cityInput.addEventListener("input", validateCity);
+      areaCodeInput.addEventListener("input", validateAreaCode);
+      mobileInput.addEventListener("input", validateMobile);
+      dateInput.addEventListener("input", validateDate);
+      complaintTypeInput.addEventListener("input", validateComplaintType);
+      complaintInput.addEventListener("input", validateComplaint);
+
+      form.addEventListener("submit", function (e) {
+        var valid =
+          validateAddress() &
+          validateCity() &
+          validateAreaCode() &
+          validateMobile() &
+          validateDate() &
+          validateComplaintType() &
+          validateComplaint();
+        if (!valid) {
+          e.preventDefault();
+        }
+      });
+    });
+  </script>
+  <body>
+    <!-- header -->
+    <div class="header-w3l-agile">
+      <div class="container">
+        <h1 style="color: white; text-align: center; font-size: 50px">
+          Crime Analysis
+        </h1>
+
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <!-- //header -->
+    <!-- banner -->
+    <div class="banner-w3ls" id="home-background-change" style="min-height: 300px">
+      <div class="container">
+        <div class="header-nav">
+          <nav class="navbar navbar-default">
+            <!-- navbar-header -->
+            <div
+              class="collapse navbar-collapse"
+              id="bs-example-navbar-collapse-1"
+            >
+              <ul class="nav navbar-nav navbar-right">
+                <li>
+                  <a
+                    href="{% url 'upload_complaints' %}"
+                    class="hvr-underline-from-center active"
+                    >Upload Complaints</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="{% url 'change_details' %}"
+                    class="hvr-underline-from-center active"
+                    >Change Userid And Password</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="{% url 'user_login' %}"
+                    class="hvr-underline-from-center"
+                    >Logout</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="clearfix"></div>
+          </nav>
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="banner-info">
+          <div id="top" class="callbacks_container"></div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-agileits" id="contact">
+      <div class="container">
+        <div class="title-agileits">
+          <h3>Upload Complaints</h3>
+        </div>
+        <div class="agileits_w3layouts">
+          <div class="col-md-6 wthree-agile-icons">
+            <img
+<<<<<<< HEAD
+              src="{% static 'images/user1.png' %}"
+=======
+              src="{% static 'images/user_img.png' %}"
+>>>>>>> bb7e08f (first commit)
+              width="300"
+              height="300"
+              style="margin-top: 80px"
+            />
+          </div>
+          <div class="col-md-6 wthree-agile-form">
+            <form method="post">
+              {% csrf_token %}
+              <span class="input input--nariko">
+                <span
+                  class="input__label-content input__label-content--nariko"
+                  style="color: black; font-size: 25px"
+                  >Name</span
+                >
+                <input
+                  name="name"
+                  type="text"
+                  id="input-20"
+                  value="{{username}}"
+                  placeholder="Enter your name"
+                  required=""
+                  style="width: 100%; height: 2.5em; background: #efeeee"
+                  readonly
+                />
+              </span>
+              <span class="input input--nariko">
+                <span
+                  class="input__label-content input__label-content--nariko"
+                  style="color: black; font-size: 25px"
+                  >Email</span
+                >
+                <input
+                  name="email"
+                  type="text"
+                  id="input-21"
+                  value="{{email}}"
+                  placeholder="Enter your email"
+                  style="width: 100%; height: 2.5em; background: #efeeee"
+                  required=""
+                  readonly
+                />
+              </span>
+              <span class="input input--nariko">
+                <span
+                  class="input__label-content input__label-content--nariko"
+                  style="color: black; font-size: 25px"
+                  >Address</span
+                >
+                <input
+                  name="address"
+                  type="text"
+                  id="input-21"
+                  placeholder="Enter your address"
+                  style="width: 100%; height: 2.5em; background: #efeeee"
+                  required=""
+                />
+              </span>
+              <span class="input input--nariko">
+                <span
+                  class="input__label-content input__label-content--nariko"
+                  style="color: black; font-size: 25px"
+                  >City</span
+                >
+                <input
+                  name="city"
+                  type="text"
+                  id="input-21"
+                  placeholder="Enter your city"
+                  style="width: 100%; height: 2.5em; background: #efeeee"
+                  required=""
+                />
+              </span>
+              <span class="input input--nariko">
+                <span
+                  class="input__label-content input__label-content--nariko"
+                  style="color: black; font-size: 25px"
+                  >Area Code</span
+                >
+                <input
+                  name="area_code"
+                  type="text"
+                  id="input-21"
+                  placeholder=""
+                  style="width: 100%; height: 2.5em; background: #efeeee"
+                  required=""
+                />
+              </span>
+
+              <span class="input input--nariko">
+                <span
+                  class="input__label-content input__label-content--nariko"
+                  style="color: black; font-size: 25px"
+                  >Mobile Number</span
+                >
+                <input
+                  name="mobile"
+                  type="text"
+                  id="input-21"
+                  placeholder="Enter your mobile number"
+                  style="width: 100%; height: 2.5em; background: #efeeee"
+                  required=""
+                />
+                <span
+                  id="mobile-error"
+                  style="color: red; font-size: 14px"
+                ></span>
+              </span>
+              <span class="input input--nariko">
+                <span
+                  class="input__label-content input__label-content--nariko"
+                  style="color: black; font-size: 25px"
+                  >Date</span
+                >
+                <input
+                  name="date"
+                  type="text"
+                  id="input-21"
+                  placeholder="YYYY-MM-DD"
+                  style="width: 100%; height: 2.5em; background: #efeeee"
+                  required=""
+                />
+                <span
+                  id="date-error"
+                  style="color: red; font-size: 14px"
+                ></span>
+              </span>
+              <span class="input input--nariko">
+                <span
+                  class="input__label-content input__label-content--nariko"
+                  style="color: black; font-size: 25px"
+                  >Complaint Type</span
+                >
+                <input
+                  name="complaint_type"
+                  type="text"
+                  id="input-21"
+                  placeholder=" "
+                  style="width: 100%; height: 2.5em; background: #efeeee"
+                  required=""
+                />
+              </span>
+              <span class="input input--nariko">
+                <span
+                  class="input__label-content input__label-content--nariko"
+                  style="color: black; font-size: 25px"
+                  >Complaint
+                </span>
+                <textarea
+                  name="complaint"
+                  rows="10"
+                  cols="30"
+                  id="input-21"
+                  style="border: 1px solid black"
+                ></textarea>
+              </span>
+              <br /><br />
+
+              <input type="submit" value="Upload" /><br /><br />
+            </form>
+          </div>
+
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- //footer -->
+    <div class="copyright-w3-agile">
+      <div class="container">
+        <p>Crime Analysis</p>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <!-- start-smoth-scrolling -->
+
+    <!-- js -->
+    <script
+      type="text/javascript"
+      src="{% static 'js/jquery-2.1.4.min.js' %}"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{% static 'js/numscroller-1.0.js' %}"
+    ></script>
+    <script src="{% static 'js/lsb.min.js' %}"></script>
+    <script>
+      $(window).load(function () {
+        $.fn.lightspeedBox();
+      });
+    </script>
+    <!-- //js -->
+    <script type="text/javascript" src="{% static 'js/move-top.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/easing.js' %}"></script>
+    <script type="text/javascript">
+      jQuery(document).ready(function ($) {
+        $(".scroll").click(function (event) {
+          event.preventDefault();
+          $("html,body").animate(
+            { scrollTop: $(this.hash).offset().top },
+            1000
+          );
+        });
+      });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <script src="{% static 'js/responsiveslides.min.js' %}"></script>
+    <script>
+      // You can also use "$(window).load(function() {"
+      $(function () {
+        // Slideshow 4
+        $("#slider3").responsiveSlides({
+          auto: true,
+          pager: false,
+          nav: true,
+          speed: 500,
+          namespace: "callbacks",
+          before: function () {
+            $(".events").append("<li>before event fired.</li>");
+          },
+          after: function () {
+            $(".events").append("<li>after event fired.</li>");
+          },
+        });
+      });
+    </script>
+
+    <script type="text/javascript">
+      $(window).load(function () {
+        $("#flexiselDemo1").flexisel({
+          visibleItems: 2,
+          animationSpeed: 1000,
+          autoPlay: true,
+          autoPlaySpeed: 3000,
+          pauseOnHover: true,
+          enableResponsiveBreakpoints: true,
+          responsiveBreakpoints: {
+            portrait: {
+              changePoint: 480,
+              visibleItems: 1,
+            },
+            landscape: {
+              changePoint: 640,
+              visibleItems: 1,
+            },
+            tablet: {
+              changePoint: 991,
+              visibleItems: 1,
+            },
+          },
+        });
+      });
+    </script>
+    <script
+      type="text/javascript"
+      src="{% static 'js/jquery.flexisel.js' %}"
+    ></script>
+    <!-- smooth scrolling -->
+    <script type="text/javascript">
+      $(document).ready(function () {
+        /*
+			var defaults = {
+			containerID: 'toTop', // fading element id
+			containerHoverID: 'toTopHover', // fading element hover id
+			scrollSpeed: 1200,
+			easingType: 'linear'
+			};
+		*/
+        $().UItoTop({ easingType: "easeOutQuart" });
+      });
+    </script>
+    <a href="#" id="toTop" style="display: block">
+      <span id="toTopHover" style="opacity: 1"> </span
+    ></a>
+    <!-- //smooth scrolling -->
+    <script
+      type="text/javascript"
+      src="{% static 'js/bootstrap.js' %}"
+    ></script>
+  </body>
+</html>
