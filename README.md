@@ -169,34 +169,6 @@ It enables real-time crime reporting, incident monitoring, and data-driven decis
 
 <hr style="height:2px;border-width:0;color:gray;background-color:gray;margin-top:20px;margin-bottom:20px">
 
-<h1 align="left">👨‍💻 Contributors</h1>
-
-<ul>
-  <li><strong>Project Title:</strong> SafeCity Hub – A Multi-Stakeholder Crime Reporting and Urban Safety Platform</li>
-
-  <li><strong>Project Team Members:</strong></li>
-  <ul>
-    <li>
-      <a href="https://github.com/vedangdhuri" target="_blank">
-        <strong>Vedang Dhuri</strong>
-      </a> – <em>Team Leader & Technical Head</em><br>
-      Responsible for overall project architecture, backend development, database design, and integration of all technical modules.
-    </li>
-    <li>
-        <a href="https://github.com/urvee1306" target="_black">
-        <strong>Urvee Andurlekar</strong>
-        </a> - <em>UI/UX Designer and Frontend Developer</em>
-    </li>
-    <li>
-        <a href="https://github.com/YashBhurke" target="_blank">
-            <strong>Yash Bhurke</strong> 
-        </a> - Admin Dashboard & Data Analytics Module
-    </li>
-    <li><strong>Saish Desai</strong> – Database Management & Testing</li>
-    <li><strong>Santoshi Haldankar</strong> – Quality Assurance, Documentation & Deployment</li>
-  </ul>
-</ul>
-
 <hr style="height:2px;border-width:0;color:gray;background-color:gray;margin-top:20px;margin-bottom:20px">
 
 <h1>📜 License</h1>
