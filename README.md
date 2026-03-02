@@ -58,32 +58,6 @@ It enables real-time crime reporting, incident monitoring, and data-driven decis
 
 <hr style="height:2px;border-width:0;color:gray;background-color:gray;margin-top:20px;margin-bottom:20px">
 
-<h2>🛠️ Tech Stack</h2>
-<table>
-    <tr>
-        <td><b>Frontend</b></td>
-        <td>
-            <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white" alt="HTML">
-            <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white" alt="Tailwind CSS">
-            <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript">
-        </td>
-    </tr>
-    <tr>
-        <td><b>Backend</b></td>
-        <td>
-            <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
-            <img src="https://img.shields.io/badge/Django-092E20?style=flat-square&logo=django&logoColor=white" alt="Django">
-        </td>
-    </tr>
-    <tr>
-        <td><b>Database</b></td>
-        <td>
-            <img src="https://img.shields.io/badge/PostgreSQL-316192?style=flat-square&logo=postgresql&logoColor=white" alt="PostgreSQL">
-        </td>
-    </tr>
-</table>
-
-<hr style="height:2px;border-width:0;color:gray;background-color:gray;margin-top:20px;margin-bottom:20px">
 
 <h2 align="left">⚙️ Installation & Setup</h2>
 
