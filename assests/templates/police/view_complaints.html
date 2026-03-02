@@ -62,7 +62,7 @@
               <span
                 class="px-3 py-1 bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 rounded-full text-xs font-medium">{{o.complaint_type}}</span>
             </td>
-            <td class="px-4 py-4 text-gray-400 max-w-xs truncate" title="{{o.complaint}}">{{o.complaint}}</td>
+            <td class="px-4 py-4 text-gray-400 break-words max-w-lg">{{o.complaint}}</td>
             <td class="px-4 py-4 text-center">
               <a href="{% url 'arrest_criminal' o.id %}"
                 class="inline-block text-xs px-3 py-2 bg-red-500/20 text-red-400 border border-red-500/30 rounded-lg hover:bg-red-500/40 transition">

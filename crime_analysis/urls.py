@@ -26,10 +26,12 @@ urlpatterns = [
     url('^$',userviews.user_index, name="user_index"),
     url(r'^user_login/$',userviews.user_login, name="user_login"),
     url(r'^user_register/$',userviews.user_register, name="user_register"),
+    url(r'^register_otp_verify/$',userviews.register_otp_verify, name="register_otp_verify"),
     url(r'^forgot_password/$',userviews.forgot_password, name="forgot_password"),
     url(r'^otp_verify/$',userviews.otp_verify, name="otp_verify"),
     url(r'^reset_new_password/$',userviews.reset_new_password, name="reset_new_password"),
     url(r'^upload_complaints/$',userviews.upload_complaints, name="upload_complaints"),
+    url(r'^view_my_complaints/$',userviews.view_my_complaints, name="view_my_complaints"),
     url(r'^change_details/$',userviews.change_details, name="change_details"),
     url(r'^change_details1/$',userviews.change_details1, name="change_details1"),
 
@@ -49,5 +51,6 @@ urlpatterns = [
     url(r'^admin_home/$',higher_officerviews.admin_home, name="admin_home"),
     url(r'^adminview_crime/$',higher_officerviews.adminview_crime, name="adminview_crime"),
     url(r'^adminview_police/$',higher_officerviews.adminview_police, name="adminview_police"),
+    url(r'^delete_police/(?P<pk>\d+)/$',higher_officerviews.delete_police, name="delete_police"),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -19,7 +19,7 @@ def police_login(request):
             request.session['email'] = check.email
             request.session['area_code'] = check.area_code
             request.session['station_name'] = check.station_name
-            return redirect('police_home')
+            return redirect('view_complaints')
 
         except:
             pass

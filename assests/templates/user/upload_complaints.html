@@ -5,6 +5,9 @@
 <a href="{% url 'upload_complaints' %}"
   class="text-sm font-medium text-white hover:text-blue-400 transition duration-200 border-b-2 border-blue-500 pb-1">Upload
   Complaints</a>
+<a href="{% url 'view_my_complaints' %}"
+  class="text-sm font-medium text-gray-400 hover:text-white transition duration-200">My
+  Complaints</a>
 <a href="{% url 'change_details' %}"
   class="text-sm font-medium text-gray-400 hover:text-white transition duration-200">Settings</a>
 <a href="{% url 'user_login' %}"
@@ -79,15 +82,23 @@
 
           <div>
             <label for="complaint_type" class="block text-sm font-medium text-gray-300 mb-1">Complaint Type</label>
-            <select name="complaint_type" id="complaint_type" required
+            <select name="complaint_type" id="complaint_type" required onchange="toggleCustomComplaint()"
               class="w-full px-4 py-3 bg-gray-900/50 border border-gray-700/50 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition appearance-none">
               <option value="" disabled selected>Select an option</option>
               <option value="Theft">Theft / Robbery</option>
               <option value="Assault">Assault</option>
               <option value="Fraud">Fraud / Cybercrime</option>
               <option value="Missing Person">Missing Person</option>
-              <option value="Other">Other</option>
+              <option value="Other">Other (Specify Below)</option>
             </select>
+          </div>
+
+          <div id="custom_complaint_container" class="hidden animate-fade-in-down mt-4">
+            <label for="custom_complaint_type" class="block text-sm font-medium text-gray-300 mb-1">Specify Custom
+              Complaint</label>
+            <input type="text" name="custom_complaint_type" id="custom_complaint_type"
+              class="w-full px-4 py-3 bg-gray-900/50 border border-gray-700/50 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+              placeholder="E.g., Wildlife Disturbance">
           </div>
         </div>
 
@@ -108,4 +119,21 @@
     </form>
   </div>
 </div>
+
+<script>
+  function toggleCustomComplaint() {
+    const select = document.getElementById('complaint_type');
+    const container = document.getElementById('custom_complaint_container');
+    const input = document.getElementById('custom_complaint_type');
+
+    if (select.value === 'Other') {
+      container.classList.remove('hidden');
+      input.setAttribute('required', 'required');
+    } else {
+      container.classList.add('hidden');
+      input.removeAttribute('required');
+      input.value = ''; // Reset if they change their mind
+    }
+  }
+</script>
 {% endblock %}

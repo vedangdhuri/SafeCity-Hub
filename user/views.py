@@ -34,9 +34,66 @@ def user_register(request):
         location = request.POST.get('location')
         userid = request.POST.get('userid')
         password = request.POST.get('password')
-        user_reg.objects.create(fullname=fullname, email=email, mobile=mobile, gender=gender,location=location, userid=userid, password=password)
-        return redirect('user_login')
+        
+        # Check if email or userid already exists to prevent duplicate OTP confusion
+        if user_reg.objects.filter(Q(userid=userid) | Q(email=email)).exists():
+            messages.error(request, 'User ID or Email already exists.')
+            return redirect('user_register')
+            
+        # Generate OTP
+        otp = str(random.randint(100000, 999999))
+        
+        # Temporarily store user data and OTP in session
+        request.session['reg_data'] = {
+            'fullname': fullname, 'email': email, 'mobile': mobile,
+            'gender': gender, 'location': location, 'userid': userid, 'password': password
+        }
+        request.session['reg_otp'] = otp
+        
+        # Send Email
+        subject = 'Email Verification OTP - Crime Hub'
+        message = f'Your One Time Password (OTP) for registering on Crime Hub is: {otp}'
+        email_from = settings.DEFAULT_FROM_EMAIL
+        recipient_list = [email]
+        
+        try:
+            send_mail(subject, message, email_from, recipient_list)
+            messages.success(request, f'OTP sent successfully to {email}')
+            return redirect('register_otp_verify')
+        except Exception as e:
+            messages.error(request, 'Error sending verification email.')
+            return redirect('user_register')
+            
     return render(request,'user/user_register.html')
+
+def register_otp_verify(request):
+    if 'reg_data' not in request.session:
+        messages.error(request, 'Session expired. Please register again.')
+        return redirect('user_register')
+        
+    if request.method == "POST":
+        entered_otp = request.POST.get('otp')
+        saved_otp = request.session.get('reg_otp')
+        
+        if entered_otp == saved_otp:
+            # OTP Verified, save the user
+            data = request.session['reg_data']
+            user_reg.objects.create(
+                fullname=data['fullname'], email=data['email'], mobile=data['mobile'], 
+                gender=data['gender'], location=data['location'], userid=data['userid'], password=data['password']
+            )
+            
+            # Clean up
+            del request.session['reg_data']
+            del request.session['reg_otp']
+            
+            messages.success(request, 'Registration successful! You can now log in.')
+            return redirect('user_login')
+        else:
+            messages.error(request, 'Invalid OTP. Please try again.')
+            return redirect('register_otp_verify')
+            
+    return render(request, 'user/register_otp_verify.html')
 
 def forgot_password(request):
     if request.method == "POST":
@@ -129,13 +186,28 @@ def upload_complaints(request):
         area_code = request.POST.get('area_code')
         mobile = request.POST.get('mobile')
         date = request.POST.get('date')
+        
+        # Check if it was a custom category provided
         complaint_type = request.POST.get('complaint_type')
+        if complaint_type == 'Other':
+            complaint_type = request.POST.get('custom_complaint_type')
+            
         complaint = request.POST.get('complaint')
         user_complaints.objects.create(userid=userid, username=name,email=email,  address=address,
                                        city=city,area_code=area_code,mobile=mobile,date=date,complaint_type=complaint_type,
                                        complaint=complaint)
         return redirect('upload_complaints')
     return render(request,'user/upload_complaints.html',{'username':username,'email':email})
+
+
+def view_my_complaints(request):
+    if 'userid' not in request.session:
+        messages.error(request, 'Session expired. Please log in again.')
+        return redirect('user_login')
+        
+    userid = request.session['userid']
+    complaints = user_complaints.objects.filter(userid=userid).order_by('-id')
+    return render(request, 'user/view_my_complaints.html', {'complaints': complaints})
 
 
 def change_details(request):

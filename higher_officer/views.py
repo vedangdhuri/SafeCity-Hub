@@ -38,3 +38,11 @@ def adminview_crime(request):
 def adminview_police(request):
     police_det = station_details.objects.all()
     return render(request, 'higher_officer/adminview_police.html', {'police_det': police_det})
+
+def delete_police(request, pk):
+    try:
+        police_record = station_details.objects.get(id=pk)
+        police_record.delete()
+    except station_details.DoesNotExist:
+        pass
+    return redirect('adminview_police')
