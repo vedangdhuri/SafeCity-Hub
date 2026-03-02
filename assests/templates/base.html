@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crime Analysis Project</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#1E293B',
+                        secondary: '#334155',
+                        accent: '#3B82F6',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .dark-glass {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-gray-950 text-gray-100 min-h-screen flex flex-col relative overflow-x-hidden selection:bg-blue-500 selection:text-white">
+    <!-- Background Decoration -->
+    <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+        <div
+            class="absolute -top-40 -right-40 w-96 h-96 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20">
+        </div>
+        <div
+            class="absolute top-40 -left-20 w-72 h-72 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20">
+        </div>
+        <div
+            class="absolute -bottom-40 left-20 w-80 h-80 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20">
+        </div>
+        <!-- Grid pattern -->
+        <div
+            class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+CjxwYXRoIGQ9Ik0wIDBoNDB2NDBIMHoiIGZpbGw9Im5vbmUiLz4KPHBhdGggZD0iTTAgMGg0MHYxSDB6bTAgNDBWMGgxdjQweiIgZmlsbD0icmdiYSgyNTUsIDI1NSwgMjU1LCAwLjAzKSIvPgo8L3N2Zz4=')] opacity-50 block">
+        </div>
+    </div>
+
+    <!-- Header / Navbar section -->
+    <header class="relative z-50 w-full glass border-b border-gray-800/50 sticky top-0">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="{% url 'user_index' %}">
+                <h1
+                    class="text-2xl font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+                    CRIME HUB
+                </h1>
+            </a>
+            <nav class="space-x-6">
+                {% block navbar %}
+                <!-- Default Navbar -->
+                <a href="{% url 'user_index' %}"
+                    class="text-sm font-medium text-gray-400 hover:text-white transition duration-200">Home</a>
+                <a href="{% url 'user_login' %}"
+                    class="text-sm font-medium text-gray-400 hover:text-white transition duration-200">User</a>
+                <a href="{% url 'police_login' %}"
+                    class="text-sm font-medium text-gray-400 hover:text-white transition duration-200">Police</a>
+                <a href="{% url 'admin_login' %}"
+                    class="text-sm font-medium text-gray-400 hover:text-white transition duration-200">Higher
+                    Officer</a>
+                {% endblock %}
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="relative z-10 flex-grow container mx-auto px-6 py-10 flex flex-col items-center justify-center">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative z-10 w-full glass border-t border-gray-800/50 py-6 mt-auto">
+        <div class="container mx-auto text-center text-sm text-gray-500">
+            &copy; 2026 Crime Analysis Project. All rights reserved.
+        </div>
+    </footer>
+</body>
+
+</html>

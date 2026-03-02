@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="w-full flex-grow flex items-center justify-center">
+  <div class="max-w-4xl text-center space-y-8">
+    <h2 class="text-5xl md:text-6xl font-extrabold tracking-tight mb-4">
+      <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-indigo-500">
+        Advanced Crime Analytics
+      </span>
+    </h2>
+    <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+      Empowering communities and law enforcement with data-driven insights to analyze, report, and prevent crime
+      effectively across regions.
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+      <a href="{% url 'user_login' %}"
+        class="px-8 py-3 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-semibold transition-all shadow-[0_0_15px_rgba(37,99,235,0.5)]">
+        Citizens Portal
+      </a>
+      <a href="{% url 'police_login' %}"
+        class="px-8 py-3 rounded-full glass hover:bg-white/10 text-white font-semibold transition-all">
+        Police Access
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20 text-left">
+      <div class="glass p-6 rounded-2xl hover:-translate-y-1 transition duration-300">
+        <div class="h-12 w-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+            </path>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-2">Report Instantly</h3>
+        <p class="text-gray-400 text-sm">Submit complaints securely to your local precinct and track the status of
+          investigations in real time.</p>
+      </div>
+      <div class="glass p-6 rounded-2xl hover:-translate-y-1 transition duration-300">
+        <div class="h-12 w-12 bg-purple-500/20 rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+            </path>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-2">Visualize Data</h3>
+        <p class="text-gray-400 text-sm">Law enforcement officials can access analytical charts and maps plotting
+          regional incidents over time.</p>
+      </div>
+      <div class="glass p-6 rounded-2xl hover:-translate-y-1 transition duration-300">
+        <div class="h-12 w-12 bg-indigo-500/20 rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4">
+            </path>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-2">Centralized Logs</h3>
+        <p class="text-gray-400 text-sm">Higher officers maintain oversight over stations, criminal lists, and
+          organizational performance metrics.</p>
+      </div>
+    </div>
+
+    <!-- About the Project Section -->
+    <div class="mt-24 text-left border-t border-gray-800/80 pt-16">
+      <div class="mb-10 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight mb-4">About the Platform</h2>
+        <div class="h-1 w-20 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div class="space-y-6">
+          <p class="text-gray-300 text-lg leading-relaxed">
+            The <strong class="text-white">Advanced Crime Analytics</strong> framework is built to bridge the gap
+            between civilians and law enforcement agencies. By digitizing the complaint lifecycle, we eliminate
+            infrastructural delays and guarantee that every voice is heard securely and efficiently.
+          </p>
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <span
+                class="flex-shrink-0 h-6 w-6 rounded-full bg-blue-500/20 flex items-center justify-center border border-blue-500/30 mt-0.5">
+                <svg class="h-4 w-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </span>
+              <span class="ml-3 text-gray-400">Streamlined complaint pipelines routed instantly to corresponding region
+                officers.</span>
+            </li>
+            <li class="flex items-start">
+              <span
+                class="flex-shrink-0 h-6 w-6 rounded-full bg-purple-500/20 flex items-center justify-center border border-purple-500/30 mt-0.5">
+                <svg class="h-4 w-4 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </span>
+              <span class="ml-3 text-gray-400">High-level graphical analyses powered by robust algorithms assessing
+                regional crime frequency.</span>
+            </li>
+            <li class="flex items-start">
+              <span
+                class="flex-shrink-0 h-6 w-6 rounded-full bg-indigo-500/20 flex items-center justify-center border border-indigo-500/30 mt-0.5">
+                <svg class="h-4 w-4 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </span>
+              <span class="ml-3 text-gray-400">Secure, role-based infrastructure backed by modern encrypted database
+                protocols.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="glass p-8 rounded-2xl relative overflow-hidden group">
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-purple-600/10 opacity-0 group-hover:opacity-100 transition duration-500">
+          </div>
+          <h4 class="text-xl font-semibold text-white mb-4 relative z-10">Our Mission</h4>
+          <p class="text-gray-400 text-sm leading-loose relative z-10">
+            "To promote community safety, transparency, and rapid response through cutting-edge technology. We envision
+            a digital landscape where reporting crime relies not on tedious paperwork, but on accessible and seamless
+            software solutions available 24/7 to every citizen."
+          </p>
+          <div class="mt-6 flex items-center justify-between border-t border-gray-700/50 pt-4 relative z-10">
+            <span class="text-xs font-semibold tracking-wider text-blue-400 uppercase">System Status</span>
+            <span
+              class="flex items-center text-xs text-green-400 bg-green-400/10 px-2 py-1 rounded-full border border-green-400/20">
+              <span class="w-1.5 h-1.5 rounded-full bg-green-500 mr-1.5 animate-pulse"></span> Online
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

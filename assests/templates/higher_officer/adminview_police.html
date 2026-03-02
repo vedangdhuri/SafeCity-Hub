@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block navbar %}
+<a href="{% url 'admin_home' %}"
+    class="text-sm font-medium text-gray-400 hover:text-white transition duration-200">Upload Police Details</a>
+<a href="{% url 'adminview_police' %}"
+    class="text-sm font-medium text-white hover:text-blue-400 transition duration-200 border-b-2 border-blue-500 pb-1">View
+    Station Details</a>
+<a href="{% url 'adminview_crime' %}"
+    class="text-sm font-medium text-gray-400 hover:text-white transition duration-200">View Crime Details</a>
+<a href="{% url 'admin_login' %}"
+    class="text-sm font-medium text-red-400 hover:text-red-300 transition duration-200 ml-4">Logout</a>
+{% endblock %}
+
+{% block content %}
+<div class="w-full max-w-6xl mx-auto mt-8">
+    <div class="flex justify-between items-center mb-8">
+        <div>
+            <h2 class="text-3xl font-bold text-white tracking-tight">Registered Police Stations</h2>
+            <p class="text-sm text-gray-400 mt-1">Review the credentials and details of all affiliated officers and
+                stations.</p>
+        </div>
+    </div>
+
+    <div class="glass rounded-2xl overflow-hidden border border-gray-700/50">
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr
+                        class="bg-gray-800/80 border-b border-gray-700/50 text-sm font-semibold text-gray-300 tracking-wide uppercase">
+                        <th class="px-6 py-4">Officer Name</th>
+                        <th class="px-6 py-4">Station Name</th>
+                        <th class="px-6 py-4">Location</th>
+                        <th class="px-6 py-4">Area Code</th>
+                        <th class="px-6 py-4">User ID</th>
+                        <th class="px-6 py-4">Password</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-800/50">
+                    {% for o in police_det %}
+                    <tr class="hover:bg-white/5 transition duration-150">
+                        <td class="px-6 py-4 text-white font-medium whitespace-nowrap">{{o.police_name}}</td>
+                        <td class="px-6 py-4 text-gray-300 whitespace-nowrap">{{o.station_name}}</td>
+                        <td class="px-6 py-4 text-gray-300 whitespace-nowrap">{{o.location}}</td>
+                        <td class="px-6 py-4 text-gray-300 whitespace-nowrap">
+                            <span
+                                class="px-3 py-1 bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded-full text-xs font-medium">{{o.area_code}}</span>
+                        </td>
+                        <td class="px-6 py-4 text-gray-300 whitespace-nowrap">{{o.userid}}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="flex items-center gap-2">
+                                <input type="password" value="{{o.password}}" readonly
+                                    class="bg-transparent border-none text-gray-300 text-sm w-24 focus:ring-0 password-field-{{o.id}}" />
+                                <button type="button" onclick="togglePassword({{o.id}})"
+                                    class="text-gray-400 hover:text-white transition">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="6" class="px-6 py-12 text-center text-gray-500">
+                            <div class="flex flex-col items-center">
+                                <svg class="w-12 h-12 mb-4 text-gray-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                                    </path>
+                                </svg>
+                                <p>No police records found.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    function togglePassword(id) {
+        const input = document.querySelector(`.password-field-${id}`);
+        if (input.type === "password") {
+            input.type = "text";
+        } else {
+            input.type = "password";
+        }
+    }
+</script>
+{% endblock %}

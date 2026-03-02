@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block navbar %}
+<a href="{% url 'police_home' %}"
+  class="text-sm font-medium text-gray-400 hover:text-white transition duration-200">Settings</a>
+<a href="{% url 'view_complaints' %}"
+  class="text-sm font-medium text-gray-400 hover:text-white transition duration-200">View Complaints</a>
+<a href="{% url 'upload_criminals' %}"
+  class="text-sm font-medium text-gray-400 hover:text-white transition duration-200">Upload Criminal</a>
+<a href="{% url 'crime_analysis' %}"
+  class="text-sm font-medium text-gray-400 hover:text-white transition duration-200">Analysis</a>
+<a href="{% url 'crime_chart' %}"
+  class="text-sm font-medium text-white border-b-2 border-blue-500 pb-1 hover:text-blue-400 transition duration-200">Charts</a>
+<a href="{% url 'police_login' %}"
+  class="text-sm font-medium text-red-400 hover:text-red-300 transition duration-200 ml-4">Logout</a>
+{% endblock %}
+
+{% block content %}
+<div class="w-full max-w-5xl mx-auto mt-8">
+  <div class="mb-8">
+    <h2 class="text-3xl font-bold text-white tracking-tight">Crime Trends</h2>
+    <p class="text-sm text-gray-400 mt-1">Visualize criminal activity statistics and year-over-year trends.</p>
+  </div>
+
+  <div class="glass relative p-6 rounded-2xl border border-gray-700/50">
+    <!-- CanvasJS Chart Container -->
+    <div id="chartContainer" class="w-full h-[400px] rounded-xl overflow-hidden"></div>
+  </div>
+</div>
+
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script>
+  window.onload = function () {
+    // Dark theme customization for CanvasJS
+    CanvasJS.addColorSet("customDark", [
+      "#4F46E5", "#3B82F6", "#06B6D4", "#10B981", "#8B5CF6"
+    ]);
+
+    var chart = new CanvasJS.Chart("chartContainer", {
+      animationEnabled: true,
+      theme: "dark2", // Standard dark theme provided by CanvasJS
+      backgroundColor: "transparent",
+      colorSet: "customDark",
+      title: {
+        text: "Crime Analysis Over Years",
+        fontColor: "#F3F4F6",
+        fontFamily: "Inter, sans-serif",
+        fontSize: 24,
+        fontWeight: "bold",
+        margin: 20
+      },
+      axisX: {
+        labelFontColor: "#9CA3AF",
+        lineColor: "#4B5563",
+        tickColor: "#4B5563",
+        gridThickness: 0
+      },
+      axisY: {
+        labelFontColor: "#9CA3AF",
+        lineColor: "#4B5563",
+        tickColor: "#4B5563",
+        gridColor: "#374151"
+      },
+      data: [{
+        type: "column", // Modern column chart instead of bar
+        indexLabelFontSize: 14,
+        indexLabelFontColor: "#E5E7EB",
+        indexLabelPlacement: "outside",
+        yValueFormatString: "##0.## Crimes",
+        indexLabel: "{y}",
+        dataPoints: [
+          {% for o in objects %}
+                    { y: {{ o.dcount }}, label: "{{o.year}}"},
+    {% endfor %}
+                ]
+            }]
+        });
+  chart.render();
+    }
+</script>
+{% endblock %}
